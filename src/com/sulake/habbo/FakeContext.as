@@ -27,6 +27,11 @@ package com.sulake.habbo
 			//_assets = null;
 		}
 		
+		public function interpolate(param1:String):String
+		{
+			return "";
+		}
+		
 		public function debug(param1:String):void
 		{
 		}

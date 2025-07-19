@@ -18,7 +18,7 @@ package com.sulake.core.runtime
 		//
 		//function getInteger(param1:String, param2:int):int;
 		//
-		//function interpolate(param1:String):String;
+		function interpolate(param1:String):String;
 		//
 		//function updateUrlProtocol(param1:String):String;
 	}

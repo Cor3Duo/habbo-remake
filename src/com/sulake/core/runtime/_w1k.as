@@ -1,23 +1,27 @@
 package com.sulake.core.runtime
 {
 	import com.sulake.core.assets._v1t;
+	import com.sulake.core.runtime.events.EventDispatcherWrapper;
+	import flash.events.IEventDispatcher;
 	import flash.utils.Dictionary;
 	
 	/**
 	 * ...
 	 * @author Richard
 	 */
-	public class _w1k implements IUnknown//, §_-MX§
+	public class _w1k implements IUnknown, _MX
 	{
 		private var _disposed:Boolean = false;
 		private var _context:_RH = null;
+		private var _J2I:EventDispatcherWrapper;
+		private var _assets:_v1t;
 		
 		public function _w1k(param1:_RH, param2:uint = 0, param3:_v1t = null)
 		{
 			super();
 			//§_-x1U§ = param2;
 			//§_-6l§ = new InterfaceStructList();
-			//§_-J2I§ = new EventDispatcherWrapper();
+			_J2I = new EventDispatcherWrapper();
 			_context = param1;
 			//_assets = param3 ?? new AssetLibrary("_internal_asset_library");
 			//if(_context == null)
@@ -40,14 +44,29 @@ package com.sulake.core.runtime
 			//allDependenciesRequested();
 		}
 		
+		public function interpolate(param1:String):String
+		{
+			return _context.configuration ? _context.configuration.interpolate(param1) : "";
+		}
+		
 		public function getProperty(param1:String, param2:Dictionary = null):String
 		{
 			return _context.configuration ? _context.configuration.getProperty(param1, param2) : "";
 		}
 		
+		public function get events():IEventDispatcher
+		{
+			return _J2I;
+		}
+		
 		public function get disposed():Boolean
 		{
 			return _disposed;
+		}
+		
+		public function get assets():_v1t
+		{
+			return _assets;
 		}
 		
 		public function dispose():void

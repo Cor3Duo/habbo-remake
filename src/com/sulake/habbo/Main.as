@@ -2,6 +2,7 @@ package com.sulake.habbo
 {
 	import com.sulake.habbo.login.LoginFlow;
 	import com.sulake.habbo.utils.CommunicationUtils;
+	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -17,7 +18,7 @@ package com.sulake.habbo
 		private var _m19:Boolean = true;
 		private var _k15:Dictionary;
 		private var _loginFlow:LoginFlow = null;
-		//private var _loadingScreen:IHabboLoadingScreen;
+		private var _loadingScreen:IHabboLoadingScreen;
 		
 		public function Main()
 		{
@@ -130,9 +131,16 @@ package com.sulake.habbo
 			_loginFlow.removeEventListener("LOGIN_FLOW_FINISHED_EVENT", onLoginFlowFinished);
 			_loginFlow.dispose();
 			_loginFlow = null;
-			//_loadingScreen = null;
-			//createLoadingScreen();
+			_loadingScreen = null;
+			createLoadingScreen();
 			//checkPreLoadingStatus();
+		}
+		
+		public function createLoadingScreen():void
+		{
+			_loadingScreen = new HabboLoadingScreen(stage.stageWidth, stage.stageHeight, clone(_k15));
+			//updateLoadingBarProgress();
+			stage.addChild(DisplayObject(_loadingScreen));
 		}
 		
 		private function get ssoTokenAvailable():Boolean
