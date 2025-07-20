@@ -24,7 +24,7 @@ package com.sulake.core.assets
 		// 
 		function loadFromFile(param1:_SA, param2:Boolean = true):void;
 		// 
-		// function loadFromResource(param1:XML, param2:Class) : Boolean;
+		function loadFromResource(param1:XML, param2:Class):Boolean;
 		// 
 		// function unload() : void;
 		// 

@@ -4,7 +4,6 @@ package com.sulake.habbo
 	import com.sulake.habbo.utils.CommunicationUtils;
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
-	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.utils.Dictionary;
 	

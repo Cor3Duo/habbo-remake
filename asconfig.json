@@ -1,0 +1,16 @@
+{
+  "config": "flex",
+  "compilerOptions": {
+    "target-player": "25.0",
+    "output": "bin/Main.swf",
+    "source-path": [
+      "src",
+      "C:/Users/RichardS/Downloads/FlashDevelop-5.3.3/Library/AS3/classes"
+    ],
+    "omit-trace-statements": true,
+    "optimize": true
+  },
+  "files": [
+    "src/com/sulake/habbo/Main.as"
+  ]
+}

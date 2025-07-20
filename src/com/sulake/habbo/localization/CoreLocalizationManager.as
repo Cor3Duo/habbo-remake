@@ -37,6 +37,13 @@ package com.sulake.habbo.localization
 			super(param1, param2, param3);
 		}
 
+		override protected function initComponent():void
+		{
+			_Z17 = new Dictionary();
+			_81v = new _UR();
+			_acceptEmptyMap = new _UR();
+		}
+
 		public function hasLocalization(param1:String):Boolean
 		{
 			var _loc2_:Localization = _Z17[param1] as Localization;
@@ -94,12 +101,13 @@ package com.sulake.habbo.localization
 		public function getLocalization(param1:String, param2:String = ""):String
 		{
 			var _loc3_:Localization = _Z17[param1] as Localization;
-			if (_loc3_ == null)
-			{
-				_F1H.push(param1);
-				return param2;
-			}
-			return _loc3_.value;
+			// if (_loc3_ == null)
+			// {
+			// _F1H.push(param1);
+			// return param2;
+			// }
+			// return _loc3_.value;
+			return "";
 		}
 
 		public function printNonExistingKeys():void
