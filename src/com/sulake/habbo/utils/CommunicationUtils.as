@@ -1,19 +1,19 @@
 package com.sulake.habbo.utils
 {
 	import flash.net.SharedObject;
-	
+
 	/**
 	 * ...
 	 * @author Richard
 	 */
 	public class CommunicationUtils
 	{
-		
+
 		public function CommunicationUtils()
 		{
 			super();
 		}
-		
+
 		public static function readSOLString(param1:String, param2:String = null):String
 		{
 			var _loc3_:Object = readSOLProperty(param1, param2);
@@ -23,7 +23,22 @@ package com.sulake.habbo.utils
 			}
 			return String(_loc3_);
 		}
-		
+
+		public static function writeSOLProperty(param1:String, param2:Object):void
+		{
+			var _loc3_:SharedObject = null;
+			try
+			{
+				_loc3_ = SharedObject.getLocal("fuselogin", "/");
+				_loc3_.data[param1] = param2;
+				_loc3_.flush();
+			}
+			catch (e:Error)
+			{
+				// class_14.log("Error writing SOL propert \'" + param1 + "\' with value \'" + param2 + "\'");
+			}
+		}
+
 		public static function readSOLProperty(param1:String, param2:Object = null):Object
 		{
 			var _loc4_:SharedObject = null;
@@ -46,11 +61,11 @@ package com.sulake.habbo.utils
 			}
 			catch (e:Error)
 			{
-				//§_-Lu§.log("Error reading SOL property \'" + param1 + "\'");
+				// §_-Lu§.log("Error reading SOL property \'" + param1 + "\'");
 			}
 			return param2;
 		}
-	
+
 	}
 
 }

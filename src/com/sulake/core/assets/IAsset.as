@@ -1,12 +1,12 @@
 package com.sulake.core.assets
 {
-	import com.sulake.core.runtime._02o;
+	import com.sulake.core.runtime.class_13;
 	
 	/**
 	 * ...
 	 * @author Richard
 	 */
-	public interface IAsset extends _02o
+	public interface IAsset extends class_13
 	{
 		//function get url():String;
 		//

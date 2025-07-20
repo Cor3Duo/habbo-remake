@@ -1,13 +1,13 @@
 package com.sulake.habbo
 {
-	import com.sulake.core.runtime._02o;
+	import com.sulake.core.runtime.class_13;
 	import com.sulake.habbo.localization.HabboLocalizationManager;
 	import com.sulake.habbo.onBoardingHcUi.LoaderUI;
 	import flash.display.Sprite;
 	import flash.text.TextField;
 	import flash.utils.Dictionary;
-	import com.sulake.core.runtime._RH;
-	import com.sulake.core.assets._v1t;
+	import com.sulake.core.runtime.class_31;
+	import com.sulake.core.assets.class_21;
 	import com.sulake.core.assets.AssetLibrary;
 	import com.sulake.core.assets.AssetLibraryCollection;
 	import flash.utils.ByteArray;
@@ -21,12 +21,12 @@ package com.sulake.habbo
 	 * ...
 	 * @author Richard
 	 */
-	public class HabboLoadingScreen extends Sprite implements _02o, IHabboLoadingScreen
+	public class HabboLoadingScreen extends Sprite implements class_13, IHabboLoadingScreen
 	{
 		private var _localization:HabboLocalizationManager;
 		private var _disposed:Boolean = false;
 		private var _S1O:int = 0;
-		private var _M2:_RH;
+		private var _M2:class_31;
 		private var _lX:Timer;
 		private var _Q1:int = 0;
 		private var _C14:Boolean = false;
@@ -95,11 +95,16 @@ package com.sulake.habbo
 		private function onAddedToStage(param1:Event):void
 		{
 			removeEventListener("addedToStage", onAddedToStage);
-			// stage.addEventListener("resize",onResize);
+			stage.addEventListener("resize", onResize);
 			positionLoadingScreenDisplayElements();
 			_lX = new Timer(750);
 			_lX.addEventListener("timer", onBarProgressEvent);
 			_lX.start();
+		}
+
+		private function onResize(param1:Event):void
+		{
+			positionLoadingScreenDisplayElements();
 		}
 
 		private function onBarProgressEvent(param1:Event):void
@@ -280,20 +285,20 @@ package com.sulake.habbo
 		{
 			_M2 = new FakeContext(param1);
 			var _loc3_:XML = <manifest><library /></manifest>;
-			var _loc2_:_v1t = new AssetLibrary("_assetsTemp@", _loc3_);
+			var _loc2_:class_21 = new AssetLibrary("_assetsTemp@", _loc3_);
 			(_M2.assets as AssetLibraryCollection).addAssetLibrary(_loc2_);
 			// _Vt = createConfiguration(_M2);
 			_localization = createLocalization(_M2);
 			// _localization.loadDefaultEmbedLocalizations(§_-Vt§.getProperty("environment.id"));
 		}
 
-		private function createLocalization(param1:_RH):HabboLocalizationManager
+		private function createLocalization(param1:class_31):HabboLocalizationManager
 		{
 			var _loc5_:XML = <manifest><library /></manifest>;
 			var _loc2_:ByteArray = new HabboLocalizationCom.manifest() as ByteArray;
 			var _loc3_:XML = new XML(_loc2_.readUTFBytes(_loc2_.length));
 			_loc5_.library.appendChild(_loc3_.component.assets);
-			var _loc4_:_v1t = new AssetLibrary("_assetsLocalization@");
+			var _loc4_:class_21 = new AssetLibrary("_assetsLocalization@");
 			_loc4_.loadFromResource(_loc5_, HabboLocalizationCom);
 			return new HabboLocalizationManager(param1, 0, _loc4_);
 		}

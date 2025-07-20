@@ -1,6 +1,6 @@
 package com.sulake.habbo.login
 {
-	import com.sulake.core.runtime._02o;
+	import com.sulake.core.runtime.class_13;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
@@ -11,7 +11,7 @@ package com.sulake.habbo.login
 	 * ...
 	 * @author Richard
 	 */
-	public class Background extends Sprite implements _02o
+	public class Background extends Sprite implements class_13
 	{
 		[Embed(source = "/assets/hitchTile.png")]
 		private static const background_tiles_png:Class;

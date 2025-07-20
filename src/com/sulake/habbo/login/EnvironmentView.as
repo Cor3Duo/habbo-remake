@@ -1,6 +1,6 @@
 package com.sulake.habbo.login
 {
-	import com.sulake.core.runtime._02o;
+	import com.sulake.core.runtime.class_13;
 	import com.sulake.habbo.onBoardingHcUi.Button;
 	import com.sulake.habbo.onBoardingHcUi.ColouredButton;
 	import flash.display.Bitmap;
@@ -17,7 +17,7 @@ package com.sulake.habbo.login
 	 * ...
 	 * @author Richard
 	 */
-	public class EnvironmentView extends Sprite implements _02o
+	public class EnvironmentView extends Sprite implements class_13
 	{
 		[Embed(source = "/assets/flag_icons_de.png")]
 		private static const flag_icon_de_png:Class;

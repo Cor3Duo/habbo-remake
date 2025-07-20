@@ -1,0 +1,2 @@
+DevID=3f60df2a-47e5-4372-bf1b-48448d750304
+License=a7e7b672ecf1b5dab1b380e9b3adb5c2b9bdc2b4eec6f683d0d7cbc1d0f794cdc2c7c5d7a36e

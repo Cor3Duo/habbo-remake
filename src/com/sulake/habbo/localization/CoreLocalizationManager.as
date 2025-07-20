@@ -2,37 +2,37 @@ package com.sulake.habbo.localization
 {
 	import com.sulake.core.assets.AssetLoaderStruct;
 	import com.sulake.core.assets.IAsset;
-	import com.sulake.core.assets._v1t;
+	import com.sulake.core.assets.class_21;
 	import com.sulake.core.localization.ILocalizable;
 	import com.sulake.core.localization.Localization;
 	import com.sulake.core.localization._62T;
 	import com.sulake.core.localization._t1N;
-	import com.sulake.core.runtime._02o;
-	import com.sulake.core.runtime._RH;
-	import com.sulake.core.runtime._w1k;
+	import com.sulake.core.runtime.class_13;
+	import com.sulake.core.runtime.class_31;
+	import com.sulake.core.runtime.class_20;
 	import com.sulake.core.localization._Uf;
-	import com.sulake.habbo.utils._UR;
 	import flash.events.Event;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.utils.Dictionary;
 	import com.sulake.core.localization.LocalizationDefinition;
+	import com.sulake.core.utils.class_24;
 
 	/**
 	 * ...
 	 * @author Richard
 	 */
-	public class CoreLocalizationManager extends _w1k implements _02o, _Uf
+	public class CoreLocalizationManager extends class_20 implements class_13, _Uf
 	{
 		private var _Z17:Dictionary;
 		private var _F1H:Array = [];
 		private var _gameDataResources:_62T;
 		private var _activeEnvironmentId:String;
-		private var _acceptEmptyMap:_UR;
-		private var _81v:_UR;
+		private var _acceptEmptyMap:class_24;
+		private var _81v:class_24;
 		private var _82N:String;
 
-		public function CoreLocalizationManager(param1:_RH, param2:uint = 0, param3:_v1t = null)
+		public function CoreLocalizationManager(param1:class_31, param2:uint = 0, param3:class_21 = null)
 		{
 			super(param1, param2, param3);
 		}
@@ -40,8 +40,8 @@ package com.sulake.habbo.localization
 		override protected function initComponent():void
 		{
 			_Z17 = new Dictionary();
-			_81v = new _UR();
-			_acceptEmptyMap = new _UR();
+			_81v = new class_24();
+			_acceptEmptyMap = new class_24();
 		}
 
 		public function hasLocalization(param1:String):Boolean

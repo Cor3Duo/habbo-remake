@@ -6,7 +6,7 @@ package com.sulake.habbo.onBoardingHcUi
 	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
 	import flash.text.TextField;
-	
+
 	/**
 	 * ...
 	 * @author Richard
@@ -30,7 +30,7 @@ package com.sulake.habbo.onBoardingHcUi
 		private var _disposed:Boolean;
 		private var _submitButton:Button;
 		private var _skipButton:Button;
-		
+
 		public function InputField(param1:IUIContext, param2:int, param3:String, param4:String, param5:String, param6:String, param7:Boolean = false)
 		{
 			super();
@@ -43,7 +43,7 @@ package com.sulake.habbo.onBoardingHcUi
 			_isPassword = param7;
 			init();
 		}
-		
+
 		public function dispose():void
 		{
 			if (_disposed)
@@ -63,12 +63,12 @@ package com.sulake.habbo.onBoardingHcUi
 			_context = null;
 			_disposed = true;
 		}
-		
+
 		public function get disposed():Boolean
 		{
 			return _disposed;
 		}
-		
+
 		private function init():void
 		{
 			_frame = LoaderUI.createFrame(_caption, _subCaption, new Rectangle(0, 0, _dialogWidth, 1), _style);
@@ -104,7 +104,7 @@ package com.sulake.habbo.onBoardingHcUi
 			var _loc3_:int = -50;
 			_frame.y = -(int(_loc3_ / 2));
 		}
-		
+
 		private function onInputChange(param1:Event):void
 		{
 			_promptField.visible = _field.text.length == 0;
@@ -118,13 +118,13 @@ package com.sulake.habbo.onBoardingHcUi
 				dispatchEvent(param1.clone());
 			}
 		}
-		
+
 		private function onInputBackgroundClicked(param1:MouseEvent):void
 		{
 			_context.stage.focus = _field;
 			onInputClicked(null);
 		}
-		
+
 		private function onInputClicked(param1:Event):void
 		{
 			if (_inputClickedAlready)
@@ -137,12 +137,12 @@ package com.sulake.habbo.onBoardingHcUi
 			_field.removeEventListener("click", onInputClicked);
 			onInputChange(null);
 		}
-		
+
 		public function get text():String
 		{
 			return _field.text;
 		}
-	
+
 	}
 
 }

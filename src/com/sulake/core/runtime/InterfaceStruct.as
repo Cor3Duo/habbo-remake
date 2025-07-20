@@ -2,7 +2,7 @@ package com.sulake.core.runtime
 {
   import flash.utils.getQualifiedClassName;
 
-  internal final class InterfaceStruct implements _02o
+  internal final class InterfaceStruct implements class_13
   {
     private var _s1s:IID;
     private var _iis:String;

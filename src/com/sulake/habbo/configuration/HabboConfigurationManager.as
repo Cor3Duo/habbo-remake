@@ -1,18 +1,18 @@
 package com.sulake.habbo.configuration
 {
-	import com.sulake.core.assets._v1t;
-	import com.sulake.core.runtime._RH;
-	import com.sulake.core.runtime._w1k;
+	import com.sulake.core.assets.class_21;
+	import com.sulake.core.runtime.class_31;
+	import com.sulake.core.runtime.class_20;
 	import flash.utils.Dictionary;
 	
 	/**
 	 * ...
 	 * @author Richard
 	 */
-	public class HabboConfigurationManager extends _w1k// implements §_ -MX§, §_ -s1L§
+	public class HabboConfigurationManager extends class_20// implements §_ -MX§, §_ -s1L§
 	{
 		
-		public function HabboConfigurationManager(param1:_RH, param2:uint = 0, param3:_v1t = null)
+		public function HabboConfigurationManager(param1:class_31, param2:uint = 0, param3:class_21 = null)
 		{
 			super(param1, param2, param3);
 			//param1.configuration = this;

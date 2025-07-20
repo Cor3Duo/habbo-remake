@@ -10,7 +10,7 @@
         "src/com/sulake/habbo/Main.as",
         "-source-path",
         "src",
-        "-output=bin/Main.swf"
+        "-output=bin/HabboAir.swf"
       ],
       "group": "build"
     }

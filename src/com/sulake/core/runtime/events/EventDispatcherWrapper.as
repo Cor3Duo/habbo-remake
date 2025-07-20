@@ -3,8 +3,8 @@ package com.sulake.core.runtime.events
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-	import com.sulake.core.runtime._02o;
-	import com.sulake.core._k3;
+	import com.sulake.core.runtime.class_13;
+	import com.sulake.core.class_79;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	
@@ -12,7 +12,7 @@ package com.sulake.core.runtime.events
 	 * ...
 	 * @author Richard
 	 */
-	public class EventDispatcherWrapper implements IEventDispatcher, _02o
+	public class EventDispatcherWrapper implements IEventDispatcher, class_13
 	{
 		
 		private static const _Zf:uint = 0;
@@ -114,11 +114,11 @@ package com.sulake.core.runtime.events
 				{
 					if (_F1z != null)
 					{
-						_k3.crash("Error caught when handling " + getQualifiedClassName(param1) + ": " + _F1z.message, _F1z.errorID, _F1z);
+						class_79.crash("Error caught when handling " + getQualifiedClassName(param1) + ": " + _F1z.message, _F1z.errorID, _F1z);
 					}
 					else
 					{
-						_k3.crash("Error caught when handling " + getQualifiedClassName(param1) + ". No error data available!", 0, _F1z);
+						class_79.crash("Error caught when handling " + getQualifiedClassName(param1) + ". No error data available!", 0, _F1z);
 					}
 				}
 				return _Y1w == 0;

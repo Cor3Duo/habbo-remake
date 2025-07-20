@@ -1,8 +1,7 @@
 package com.sulake.habbo.login
 {
 	import com.sulake.core.assets.AssetLibrary;
-	import com.sulake.core.assets._v1t;
-	import com.sulake.core.runtime._RH;
+	import com.sulake.core.runtime.class_31;
 	import com.sulake.habbo.FakeContext;
 	import com.sulake.habbo.HabboConfigurationCom;
 	import com.sulake.habbo.configuration.HabboConfigurationManager;
@@ -10,17 +9,21 @@ package com.sulake.habbo.login
 	import flash.display.Bitmap;
 	import flash.display.Loader;
 	import flash.display.Sprite;
-	import com.sulake.core.runtime._02o;
+	import com.sulake.core.runtime.class_13;
 	import flash.events.Event;
 	import flash.text.TextField;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
+	import flash.geom.Rectangle;
+	import com.sulake.habbo.utils.animation.TweenUtils;
+	import com.sulake.habbo.onBoardingHcUi.Button;
+	import flash.utils.getTimer;
 	
 	/**
 	 * ...
 	 * @author Richard
 	 */
-	public class LoginFlow extends Sprite implements ILoginContext//, _02o, ILoginViewer
+	public class LoginFlow extends Sprite implements ILoginContext, class_13//, ILoginViewer
 	{
 		[Embed(source = "/assets/logo_new.png")]
 		private static const habbo_logo_png:Class;
@@ -28,15 +31,17 @@ package com.sulake.habbo.login
 		private var _x1z:Sprite;
 		private var _background:Background;
 		private var _B1n:Loader;
+		private var _91d:Loader;
 		private var _mainSprite:Sprite;
 		private var _F1m:Sprite;
 		private var _V1c:SsoTokenView;
 		private var _j4:EnvironmentView;
 		private var _ssoToken:String;
 		private var _Vt:HabboConfigurationManager;
-		private var _M2:_RH;
+		private var _M2:class_31;
 		private var _xY:ColouredButton;
 		private var _H2H:Boolean;
+		private var _lastFrameTime:int;
 		
 		public function LoginFlow(param1:Dictionary)
 		{
@@ -60,7 +65,7 @@ package com.sulake.habbo.login
 			//§_-sz§.addEventListener("SSO_TOKEN_AVAILABLE",onSsoTokenAvailable);
 		}
 		
-		private function createConfiguration(param1:_RH):HabboConfigurationManager
+		private function createConfiguration(param1:class_31):HabboConfigurationManager
 		{
 			var _loc5_:XML = <manifest><library /></manifest>;
 			var _loc2_:ByteArray = new HabboConfigurationCom.manifest() as ByteArray;
@@ -99,17 +104,17 @@ package com.sulake.habbo.login
 		
 		public function init():void
 		{
-			//stage.addEventListener("resize",onStageResize);
+			stage.addEventListener("resize",onStageResize);
 			_background = new Background();
 			addChild(_background);
 			_B1n = new Loader();
 			_B1n.visible = false;
 			_B1n.alpha = 0;
 			addChild(_B1n);
-			//§_-91d§ = new Loader();
-			//§_-91d§.visible = false;
-			//§_-91d§.alpha = 0;
-			//addChild(§_-91d§);
+			_91d = new Loader();
+			_91d.visible = false;
+			_91d.alpha = 0;
+			addChild(_91d);
 			_x1z = new Sprite();
 			addChild(_x1z);
 			var _loc1_:Bitmap = new habbo_logo_png();
@@ -129,13 +134,47 @@ package com.sulake.habbo.login
 			//§_-H1S§ = new LoginView(this);
 			//§_-E2M§ = new AvatarView(this);
 			_V1c = new SsoTokenView(this);
-			//_xY = new ColouredButton("red", "X", new Rectangle(0, 0, 0, 40), true, onClose, 14211288);
+			_xY = new ColouredButton("red", "X", new Rectangle(0, 0, 0, 40), true, onClose, 14211288);
 			//§_-j4§.init();
-			//loadImages();
+			loadImages();
 			showScreen(4);
 			layoutMainElements();
-			//addEventListener("addedToStage",onAddedToStage);
-			//addEventListener("enterFrame",onEnterFrame);
+			addEventListener("addedToStage",onAddedToStage);
+			addEventListener("enterFrame",onEnterFrame);
+		}
+
+		private function loadImages() : void
+		{
+			ImageLoader.CreateLoader(_91d,getProperty("landing.view.background_right.uri"),onImageComplete);
+			ImageLoader.CreateLoader(_91d,getProperty("landing.view.background_left.uri"),onImageComplete);
+		}
+
+		private function onImageComplete(param1:ImageLoaderEvent) : void
+		{
+			//  class_14.log("Image complete: " + param1.url);
+			param1.loader.visible = true;
+			TweenUtils.alphaTweenVisible(param1.loader,0,1.2);
+			layoutMainElements();
+		}
+
+		private function onAddedToStage(param1:Event) : void
+		{
+			removeEventListener("addedToStage",onAddedToStage);
+			_lastFrameTime = getTimer();
+			layoutMainElements();
+		}
+
+		private function onEnterFrame(param1:Event) : void
+		{
+			TweenUtils.var_347.advanceTime((getTimer() - _lastFrameTime) / 1000);
+			_lastFrameTime = getTimer();
+		}
+
+		private function onClose(param1:Button):void
+		{
+			removeChild(_xY);
+			// var_119.closeCaptcha();
+			showScreen(2);
 		}
 		
 		public function showScreen(param1:int):void
@@ -197,8 +236,8 @@ package com.sulake.habbo.login
 				_mainSprite.x = 5;
 			}
 			_mainSprite.y = 50;
-			//_xY.y = 30;
-			//_xY.x = stage.stageWidth - _xY.width - 30;
+			_xY.y = 30;
+			_xY.x = stage.stageWidth - _xY.width - 30;
 			//§_-91d§.x = Math.max(400,stage.stageWidth - §_-91d§.width + 50);
 			//§_-91d§.y = stage.stageHeight - §_-91d§.height + 50;
 			//§_-B1n§.x = -50;
@@ -213,6 +252,15 @@ package com.sulake.habbo.login
 				//§_-Lu§.log("[LoginFlow] Add property: " + param1);
 			}
 			return _loc3_;
+		}
+
+		private function onStageResize(param1:Event) : void
+		{
+			if(disposed)
+			{
+				return;
+			}
+			layoutMainElements();
 		}
 		
 		public function dispose():void
